@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta
+      name="description"
+      content="Web site created using create-react-app"
+    />
+
+  
+    
+   
+   
+     <link href="https://use.fontawesome.com/releases/v5.0.4/css/all.css" rel="stylesheet">
+     <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css" />
+   
+    <link
+      href="https://fonts.googleapis.com/css?family=Lato:300,300i,700"
+      rel="stylesheet"
+    />
+
+   
+    <style>
+
+      
+   * {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  font-family: "Josefin Sans", sans-serif;
+}
+
+.navbar {
+  
+  font-size: 18px;
+  z-index:1;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  padding-bottom: 10px;
+}
+
+.main-nav {
+  list-style-type: none;
+  display: none;
+}
+
+.nav-links,
+.logo {
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.main-nav li {
+  text-align: center;
+  margin: 15px auto;
+}
+
+.logo {
+  display: inline-block;
+  font-size: 22px;
+  margin-top: 10px;
+  margin-left: 20px;
+}
+
+.navbar-toggle {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  cursor: pointer;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 24px;
+}
+
+.active {
+  display: block;
+}
+
+@media screen and (min-width: 768px) {
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 0;
+    height: 70px;
+    align-items: center;
+  }
+
+  .main-nav {
+    display: flex;
+    margin-right: 30px;
+    flex-direction: row;
+    justify-content: flex-end;
+  }
+
+  .main-nav li {
+    margin: 0;
+  }
+
+  .nav-links {
+    margin-left: 40px;
+  }
+
+  .logo {
+    margin-top: 0;
+  }
+
+  .navbar-toggle {
+    display: none;
+  }
+
+  .logo:hover,
+  .nav-links:hover {
+    color: rgba(255, 255, 255, 1);
+  }
+
+  .addToCartBtn{
+  margin-left:0px
+}
+}
+
+.sticky {
+ 
+  position: sticky;
+  top: 0;
+  width: 100%;
+}
+
+ul li{
+  cursor: pointer;
+}
+
+
+/* .myCarouselImage{
+  width: 400px;
+  height: 250px;
+  border-radius: 5px;
+  
+} */
+
+.myCarouselImage:hover{
+ 
+}
+
+
+img{
+  height: 30%;
+
+}
+
+.carousel{
+  margin-top: 5%;
+  
+ 
+  
+}
+
+
+.container {
+  position: relative;
+  margin-top: 50px;
+  width: 500px;
+  height: 600px;
+  
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0);
+  transition: background 0.5s ease;
+}
+
+
+
+
+
+.title {
+  position: absolute;
+  width: 500px;
+  left: 0;
+  top: 120px;
+  font-weight: 700;
+  font-size: 30px;
+  text-align: center;
+  text-transform: uppercase;
+  color: white;
+  z-index: 1;
+  transition: top .5s ease;
+}
+
+.container:hover .title {
+  top: 90px;
+}
+
+
+
+.button p {
+  width: 200px;
+  padding: 12px 48px;
+  text-align: center;
+  color: white;
+  border: solid 2px white;
+  z-index: 1;
+  text-decoration: none;
+    font-size: 1.5em;
+    
+    /* Border styles */
+    border: 3px solid white;
+    border-radius: 10px;
+    
+    /* Background styles */
+    background-color:dimgray;
+}
+
+.container:hover .button {
+  opacity: 1;
+}
+
+@media screen and (max-width: 600px) {
+.button{
+  left:20%;
+}
+
+
+}
+
+@media screen and (max-width: 650px) {
+.button{
+  left:20%;
+}
+}
+
+@media screen and (max-width: 700px) {
+.button{
+  left:20%;
+}
+}
+
+.addToCartBtn{
+  margin-left:-50%;
+}
+
+
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  max-width: 1000px;
+  border-radius: 10px;
+ 
+  text-align: center;
+  font-family: arial;
+}
+
+.cart-in-cart {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  max-width: 100px;
+  border-radius: 10px;
+ 
+  text-align: center;
+  font-family: arial;
+}
+.card-shop-cart {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  max-width: 2000px;
+  border-radius: 10px;
+ 
+  text-align: center;
+  font-family: arial;
+}
+
+.card-shipping{
+  position: absolute;
+  left: 70%;
+  right: 0;
+  top: 5%;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  max-width: 500px;
+  border-radius: 10px;
+ 
+  text-align: center;
+  font-family: arial;
+}
+
+.card-shipping-container {
+  display: flex;
+  flex-flow: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+ 
+  box-sizing: border-box;
+
+}
+
+.card-container {
+  display: flex;
+  flex-flow: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+ 
+  box-sizing: border-box;
+
+}
+
+.product p{
+  font-size: 20px;
+
+  color: black
+
+}
+.detailProduct p{
+  font-size: 20px;
+
+  color: black
+
+}
+.price-tag {
+  position: absolute;
+  background-color: rgba(#2c3e50, 0.95);
+  color: red;
+  border-radius: 0.25rem;
+  padding: 0.125rem 0.5rem;
+  top: 1rem;
+  left: 1rem;
+}
+
+
+.product button .buttonText {
+color: rebeccapurple;
+
+}
+
+.btn-addToCart{
+  font-size: 1.6rem;
+    padding: 1.4rem 3rem;
+    background: orange;
+    color: white;
+
+    text-transform: uppercase;
+    display: inline-block;
+    text-decoration: none;
+    position: relative;
+    -webkit-transition: all 0.4s;
+    transition: all 0.4s;
+    font-weight: 400;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    /*Add later when we use this for the button in form*/
+    border: none;
+    cursor: pointer;
+}
+
+ 
+
+
+
+
+/* List */
+.card-shop-cart ul li {
+  display: flex;
+  margin: 5px 20px;
+}
+
+.card-shop-cart ul h3 {
+  font-size: 20px;
+  color: black;
+}
+
+.formOne{
+  
+
+  -webkit-transition: width 2s; /* For Safari 3.1 to 6.0 */
+  transition: all 300ms linear;
+}
+
+.formTwo{
+ 
+
+  -webkit-transition: width 2s; /* For Safari 3.1 to 6.0 */
+  transition: width 2s;
+
+}
+
+
+    </style>
+
+<script>
+  
+   document.addEventListener('DOMContentLoaded', function() {
+  // When the event DOMContentLoaded occurs, it is safe to access the DOM
+
+  // When the user scrolls the page, execute myFunction 
+  window.addEventListener('scroll', myFunctionForSticky);
+
+  // Get the navbar
+  var navbar = document.getElementById("navbar");
+
+  // Get the offset position of the navbar
+  var sticky = navbar.offsetTop;
+
+  // Add the sticky class to the navbar when you reach its scroll position. 
+  // Remove "sticky" when you leave the scroll position
+
+  function myFunctionForSticky() {
+   
+    if (window.pageYOffset >= sticky) {
+      navbar.classList.add("sticky");
+    } else {
+      navbar.classList.remove("sticky");
+    }
+  }
+
+  /*Toggle between adding and removing the "responsive" class to topnav
+  when the user clicks on the icon*/
+
+  function myFunctionForResponsive() {
+    navbar.classList.toggle('responsive');
+  }
+})
+    </script>
+    
+
+   
+
+
+    
+
+    
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+   -->
+    <!--
+      manifest.json provides metadata used when your web app is installed on a
+      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
+    -->
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <link rel="stylesheet" href="%PUBLIC_URL%/styles/style.css"/>   
+    <!--
+      Notice the use of %PUBLIC_URL% in the tags above.
+      It will be replaced with the URL of the `public` folder during the build.
+      Only files inside the `public` folder can be referenced from the HTML.
+
+      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
+      work correctly both with client-side routing and a non-root public URL.
+      Learn how to configure a non-root public URL by running `npm run build`.
+    -->
+    <title>React App</title>
+  </head>
+  <body>
+      
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+    <!--
+      This HTML file is a template.
+      If you open it directly in the browser, you will see an empty page.
+
+      You can add webfonts, meta tags, or analytics to this file.
+      The build step will place the bundled scripts into the <body> tag.
+
+      To begin the development, run `npm start` or `yarn start`.
+      To create a production bundle, use `npm run build` or `yarn build`.
+    -->
+    <div class="footer">
+      <div class="footer__logo">
+        <!-- <img src="img/logo-green.png" alt="Natours logo" /> -->
+      </div>
+      <ul class="footer__nav">
+        <li><a href="#">About us</a></li>
+        <li><a href="#">Download apps</a></li>
+        <li><a href="#">Get a merchant account</a></li>
+        <li><a href="#">Careers</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+      <p class="footer__copyright">
+        &copy; by VIT consults. All rights reserved.
+      </p>
+    </div>
+  </body>
+</html>
