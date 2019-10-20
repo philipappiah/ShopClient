@@ -94,14 +94,14 @@ export class DetailPage extends React.Component {
         
        
          
-<div style={{marginTop:'10%'}}>
+<div style={{marginTop:'10%', marginLeft:'2%'}}>
         
           <div class="ui divided items" >
 <div class="item">
   <div class="image" style={{width:'30%'}}><img src={`http://localhost:9000/img/shopProducts/${this.state.productImageUrl}`}  style={{borderRadius:'10px'}} /></div>
   <div class="content">
   
-    <div class="meta"><span class="cinema">GHS {this.state.price}</span></div>
+    <div class="meta"><span class="detail-price">GHS {this.state.price}</span></div>
     <div class="description">
   
        
@@ -113,7 +113,7 @@ export class DetailPage extends React.Component {
               <button
                 onClick={this.inc1.bind(this)}
                 className="btn-addToCart"
-                style={{ width: "25%" }}
+               
               >
                 {this.state.isLoadingInc ? (
                   <Dimmer active style={{ background: "orange" }}>
@@ -133,7 +133,7 @@ export class DetailPage extends React.Component {
               
                 onClick={this.dec1.bind(this)}
                 className="btn-addToCart"
-                style={{ width: "25%" }}
+               
               >
                  {this.state.isLoadingDecr ? (
                   <Dimmer active style={{ background: "orange" }}>
@@ -150,7 +150,7 @@ export class DetailPage extends React.Component {
               </button>
             </div>
       
-      <div class="ui label">
+      <div id="additional" class="ui label additional">
         <i aria-hidden="true" class="globe icon"></i>
         Additional Info
       </div>
@@ -171,7 +171,7 @@ export class DetailPage extends React.Component {
 
 
   
-        <table class="ui celled padded table" style={{width:'60%'}}>
+        <table id="product-table" class="ui celled padded table " style={{width:'60%'}}>
   <thead class="">
     <tr class="">
       <th class="single line">Specifications</th>

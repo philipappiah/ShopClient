@@ -29,6 +29,14 @@ export class StepFormTwo extends React.Component {
         visible: true
     }
     
+    componentDidMount(){
+      const prevData = window.sessionStorage.getItem('shippingAddress');
+      if(prevData){
+        console.log(prevData);
+      }
+
+    }
+
     toggleVisibility = () =>{
         this.setState((prevState) => ({ visible: !prevState.visible }));
     

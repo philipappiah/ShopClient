@@ -24,15 +24,32 @@ import {
 export class StepFormOne extends React.Component {
     state = {
         step:0,
-        visible: true
+        visible: true,
+        userAddress:''
     }
     toggleVisibility = () =>{
     this.setState((prevState) => ({ visible: !prevState.visible }));
+   
 
      window.setTimeout(()=>{
       this.setStep(1);
   }, 500)
     
+    }
+
+    componentDidMount(){
+      const prevData = window.sessionStorage.getItem('shippingAddress');
+      if(prevData){
+        this.setState({userAddress:prevData});
+       // console.log(prevData);
+      }
+
+    }
+
+    setAddress = (e) => {
+     
+      window.sessionStorage.setItem('shippingAddress', e.target.value);
+
     }
     
 
@@ -76,8 +93,12 @@ export class StepFormOne extends React.Component {
           <Form.Field>
             <label style={{ fontSize: "15px" }}>Address</label>
             <input
+              onChange={this.setAddress}
+              defaultValue={this.state.userAddress}
+          
               placeholder="Address"
               style={{ height: "45px", fontSize: "15px" }}
+              
             />
           </Form.Field>
           

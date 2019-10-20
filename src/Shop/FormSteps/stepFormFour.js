@@ -18,7 +18,7 @@ import {
     Transition
   } from "semantic-ui-react";
 
-export class StepFromThree extends React.Component{
+export class StepFromFour extends React.Component{
 
     state = {
         step:0,
@@ -29,7 +29,7 @@ export class StepFromThree extends React.Component{
         this.setState((prevState) => ({ visible: !prevState.visible }));
     
          window.setTimeout(()=>{
-          this.setStep(3);
+          this.setStep(0);
       }, 500)
         
         }
@@ -53,6 +53,27 @@ export class StepFromThree extends React.Component{
       
       }
 
+      onSubmit = () => {
+        console.log(this.props.cartData);
+        
+        // try {
+        //   const res = await axios({
+        //     method: "POST",
+        //     url: "http://localhost:9000/api/v1/user/checkOut",
+    
+        //     withCredentials: true
+        //   });
+         
+         
+          
+         
+         
+        // }catch(err){
+        //   console.log(err)
+        // }
+    
+      }
+
 
     render(){
         const { visible } = this.state
@@ -64,10 +85,10 @@ export class StepFromThree extends React.Component{
      <Transition visible={visible} animation='scale' duration={500}>
 
        <div>
-       <h2>Checkout</h2>
+       <h2>Confirm Your order</h2>
       
         <Form.Group grouped style={{fontSize:'20px'}}>
-      <label>Select Payment Option</label>
+
       <Form.Field
         label='creditCard'
         control='input'
@@ -101,11 +122,13 @@ export class StepFromThree extends React.Component{
        content={visible ? 'Prev' : 'Show'}
        onClick={this.toggleVisibilityPrev}
      />
+
   
-       <Button style={{fontSize:'15px'}}
-       content={visible ? 'Next' : 'Show'}
-       onClick={this.toggleVisibility}
-     />
+       <Button style={{fontSize:'15px'}} onClick={this.onSubmit}>
+         Submit
+
+       </Button>
+    
     
        </div>
      </Transition>
@@ -126,7 +149,7 @@ export class StepFromThree extends React.Component{
     </Step>
 
     <Step>
-      <Step.Content>
+      <Step.Content completed>
       <Icon style={{fontSize:'20px'}}  name='info circle' />
         <Step.Description>Comfirm your order</Step.Description>
       </Step.Content>
@@ -139,4 +162,4 @@ export class StepFromThree extends React.Component{
     }
 }
 
-export default StepFromThree;
+export default StepFromFour;

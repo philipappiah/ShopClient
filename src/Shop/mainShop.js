@@ -96,6 +96,22 @@ class MainShop extends Component {
     });
   }
 
+  getProductDetail=(value)=>{
+  
+    
+     
+   
+    this.props.history.push({
+      pathname:"/shop/product",
+      state:{
+          key:value
+       }
+     });
+
+    //window.location.assign("/shop/product");
+  }
+
+
   
 
 
@@ -104,10 +120,15 @@ class MainShop extends Component {
     let users, renderPageNumbers;
 
     if ( this.state.shopProducts !== null) {
-      users =  this.state.shopProducts.map(user => (
+      users =  this.state.shopProducts.map(product => (
    
         
-          <img style={{width:'15%', height:'10%',  display:'inline-block', margin:'10px', borderRadius:'5px'}}  className="myCarouselImage" src={`http://localhost:9000/img/shopProducts/${user.imageCover}`} />
+          <img
+            
+            className="mainPageImage" 
+            key={product.id}
+            onClick={()=>this.getProductDetail(product.id)}
+            src={`http://localhost:9000/img/shopProducts/${product.imageCover}`} />
            
       ));
     }
@@ -133,7 +154,7 @@ class MainShop extends Component {
 
         <div>
   {this.state.isLoadingInc ? (
-          <Dimmer active style={{ background: "white", opacity: "0.5" }}>
+          <Dimmer active style={{  opacity: "0.5" }}>
              Loading ...
             <Loader />
           </Dimmer>

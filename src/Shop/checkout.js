@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import StepFormOne from './FormSteps/stepFormOne';
 import StepFormTwo from './FormSteps/stepFormTwo';
 import StepThree from './FormSteps/stepFormThree';
+import StepFour from './FormSteps/stepFormFour';
 
 
 
@@ -146,7 +147,14 @@ export class Checkout extends React.Component {
       }
 
 {this.state.step === 2?
-       ( <StepThree stepChosen = {this.setStep} totalPrice = {this.calculateTotal()} />)
+       ( <StepThree stepChosen = {this.setStep} totalPrice = {this.calculateTotal()} cartData = {this.props.cartList} />)
+
+       :<div></div>
+      
+      }
+
+{this.state.step === 3?
+       ( <StepFour stepChosen = {this.setStep} totalPrice = {this.calculateTotal()} cartData = {this.props.cartList} />)
 
        :<div></div>
       

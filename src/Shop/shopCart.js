@@ -139,7 +139,7 @@ export class ShopCart extends React.Component {
         /> */}
 
         {this.state.isLoadingDecr ? (
-          <Dimmer active style={{ backgroun: "white", opacity: "0.5" }}>
+          <Dimmer active style={{ opacity: "0.5" }}>
             In progress ...
             <Loader />
           </Dimmer>
@@ -151,7 +151,7 @@ export class ShopCart extends React.Component {
             {this.props.cartList ? (
               this.props.cartList.map(product =>
                 product.map(item => (
-                  <div class="ui divided items" style={{ width: "80%" }}>
+                  <div class="ui divided items" style={{ width: "80%", marginLeft:'35px' }}>
                     <div class="item">
                       <div class="image">
                         <img
@@ -165,32 +165,34 @@ export class ShopCart extends React.Component {
                           value={item.product._id}
                           className="productId"
                         />
+                          <div class="meta">
+                            <label for="price" style={{fontSize:'15px', fontWeight:'bold'}}>Price: </label>
+                          <span style={{fontSize:'15px', fontWeight:'bold'}} class="price">GHS {item.product.price * item.quantity}</span>
+                        </div>
+                        <div style={{fontSize:'15px', fontWeight:'bold'}} class="cart-description">
+                          {item.product.description}
+                        </div>
+                        <div class="extra">
+                          <div style={{fontSize:'15px', fontWeight:'bold'}} class="ui label">Quantity: {item.quantity}</div>
+                          <div class="ui label">
+                            <i aria-hidden="true" class="globe icon"></i>
+                            Additional Info
+                          </div>
+                        </div>
                         <div class="extra">
                           <div className="addToCartBtn">
                             <button
                               onClick={this.dec1.bind(this, {
                                 product: item.product._id
                               })}
-                              className="btn-addToCart"
-                              style={{ width: "25%" }}
+                              className="btn-addToCart-cart"
+                              style={{ width: "35%" }}
                             >
                               Remove from Cart
                             </button>
                           </div>
                         </div>
-                        <div class="meta">
-                          <span class="cinema">GHS {item.product.price}</span>
-                        </div>
-                        <div class="description">
-                          {item.product.description}
-                        </div>
-                        <div class="extra">
-                          <div class="ui label">Quantity: {item.quantity}</div>
-                          <div class="ui label">
-                            <i aria-hidden="true" class="globe icon"></i>
-                            Additional Info
-                          </div>
-                        </div>
+                      
                       </div>
                     </div>
 
@@ -207,7 +209,7 @@ export class ShopCart extends React.Component {
         <div style={{position:"absolute", right:'30%', marginTop:'10px'}}>
           <button
             onClick={this.checkout}
-            className="btn-addToCart"
+            className="btn-addToCart-checkout"
            
             
           >
