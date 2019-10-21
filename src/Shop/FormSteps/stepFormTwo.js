@@ -38,6 +38,7 @@ export class StepFormTwo extends React.Component {
     }
 
     toggleVisibility = () =>{
+      window.sessionStorage.setItem('shippingOption', 'pick-up point');
         this.setState((prevState) => ({ visible: !prevState.visible }));
     
          window.setTimeout(()=>{

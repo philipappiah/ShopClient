@@ -20,6 +20,7 @@ export const Logout = async () =>{
             window.location.assign('/');
         }, 1500)
         }
+        window.sessionStorage.setItem('shippingAddress', '');
       } catch (err) {
         
          showAlert('error','Error Logging you out... Please try again');

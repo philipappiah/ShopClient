@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 
 import {
     Dimmer,
@@ -17,6 +18,7 @@ import {
     Image,
     Transition
   } from "semantic-ui-react";
+import { async } from 'q';
 
 export class StepFromFour extends React.Component{
 
@@ -48,29 +50,90 @@ export class StepFromFour extends React.Component{
 
         //console.log(this.props)
         this.props.stepChosen(num);
+        
+
       
       
       
       }
 
-      onSubmit = () => {
-        console.log(this.props.cartData);
+      deleteCartItems = async () => {
+        let userId;
+        this.props.user.map(v=>{
+            userId = v._id;
+        })
+        console.log(userId)
+
+        try {
+           const res = await axios({
+              method: "PATCH",
+              url: `http://localhost:9000/api/v1/user/shopCart/deleteCart/${userId}`,
+              withCredentials: true
+            });
+           
+            if(res){
+                console.log(res);
+            }
+           
+            
+           
+           
+          }catch(err){
+            console.log(err)
+          }
+      }
+
+      onSubmit = async () => {
+       // console.log(this.props.cartData);
+        let checkItems = [];
+        this.props.cartData.map(items =>{
+            items.forEach(x=>{
+               // console.log(x._id)
+                checkItems.push({cartItem:x._id})
+            })
+          
+        })
+        let shippingAdd = window.sessionStorage.getItem('shippingAddress');
+        let ShippingOpt = window.sessionStorage.getItem('shippingOption');
+        let userId;
+        this.props.user.map(v=>{
+            userId = v._id;
+        })
+
+
         
-        // try {
-        //   const res = await axios({
-        //     method: "POST",
-        //     url: "http://localhost:9000/api/v1/user/checkOut",
+      
+
+
+        
+        try {
+          const res = await axios({
+            method: "POST",
+            url: "http://localhost:9000/api/v1/user/checkOut",
+            data:{
+                user:userId,
+                checkOutItems:checkItems,
+                shippingDetails:{
+                    shippingAddress:shippingAdd,
+                    shippingOption:ShippingOpt
+                },
+                paymentStatus:'paid'
+
+            },
+
+
     
-        //     withCredentials: true
-        //   });
+            withCredentials: true
+          });
          
+       //   this.deleteCartItems()
          
           
          
          
-        // }catch(err){
-        //   console.log(err)
-        // }
+        }catch(err){
+          console.log(err)
+        }
     
       }
 

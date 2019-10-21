@@ -154,7 +154,7 @@ export class Checkout extends React.Component {
       }
 
 {this.state.step === 3?
-       ( <StepFour stepChosen = {this.setStep} totalPrice = {this.calculateTotal()} cartData = {this.props.cartList} />)
+       ( <StepFour stepChosen = {this.setStep} totalPrice = {this.calculateTotal()} cartData = {this.props.cartList} user={this.props.users} />)
 
        :<div></div>
       
