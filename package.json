@@ -10,7 +10,7 @@
     "@sandstreamdev/react-swipeable-list": "^0.2.1",
     "@storybook/react": "^5.2.1",
     "antd": "^3.23.6",
-    "axios": "^0.19.0",
+    "axios": "^0.21.1",
     "bootstrap": "^4.3.1",
     "connected-react-router": "^6.5.2",
     "jquery": "^3.4.1",
